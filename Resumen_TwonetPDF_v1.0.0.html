@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resumen de versión - TwonetPDF v1.0.0</title>
+  <style>
+    :root {
+      --primary: #1f5fbf;
+      --text: #1f2328;
+      --muted: #5b6470;
+      --border: #d7dde5;
+      --bg: #f4f7fb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background: #eef1f5;
+      line-height: 1.55;
+    }
+    .page {
+      max-width: 210mm;
+      min-height: 297mm;
+      margin: 20px auto;
+      background: #fff;
+      padding: 18mm 16mm;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand svg { width: 46px; height: 46px; }
+    h1 { margin: 0; font-size: 1.7rem; color: var(--text); }
+    .subtitle { margin: 2px 0 0; color: var(--muted); font-size: 0.98rem; }
+    .version-badge {
+      background: #e7effc;
+      color: var(--primary);
+      border: 1px solid #c9daf7;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    h2 {
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin: 18px 0 8px;
+      border-left: 4px solid var(--primary);
+      padding-left: 10px;
+    }
+    p { margin: 8px 0; }
+    ul { margin: 8px 0 8px 20px; padding: 0; }
+    li { margin: 5px 0; }
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin: 12px 0 4px;
+    }
+    .meta-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+    .meta-card strong { display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 2px; }
+    .footer {
+      margin-top: 22px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    @media print {
+      @page { size: A4; margin: 12mm; }
+      body { background: #fff; }
+      .page { margin: 0; box-shadow: none; padding: 0; max-width: none; min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div class="brand">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="10" y="6" width="36" height="48" rx="4" fill="#ffffff" stroke="#1f5fbf" stroke-width="3"/>
+          <path d="M34 6 L46 18 L34 18 Z" fill="#dbe8ff" stroke="#1f5fbf" stroke-width="2" stroke-linejoin="round"/>
+          <rect x="16" y="24" width="18" height="3" rx="1.5" fill="#1f5fbf"/>
+          <rect x="16" y="31" width="24" height="3" rx="1.5" fill="#8fb3ea"/>
+          <rect x="16" y="38" width="20" height="3" rx="1.5" fill="#8fb3ea"/>
+          <circle cx="43" cy="43" r="11" fill="#1f5fbf"/>
+          <text x="43" y="47" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">2</text>
+        </svg>
+        <div>
+          <h1>TwonetPDF</h1>
+          <p class="subtitle">Resumen de versión del producto</p>
+        </div>
+      </div>
+      <div class="version-badge">Versión v1.0.0</div>
+    </header>
+
+    <section class="meta" aria-label="Información de la versión">
+      <div class="meta-card"><strong>Producto</strong>TwonetPDF (2net)</div>
+      <div class="meta-card"><strong>Versión</strong>v1.0.0</div>
+      <div class="meta-card"><strong>Fecha</strong>23/11/2026</div>
+      <div class="meta-card"><strong>Tecnologías</strong>HTML, CSS, JavaScript, jsPDF</div>
+    </section>
+
+    <h2>Objetivo</h2>
+    <p>Aplicación web para la empresa <strong>2net</strong> que permite adjuntar múltiples capturas o imágenes (pagos, solicitud IPTV, cambio de titular, entre otros) en un único archivo PDF formato A4, sin necesidad de descargar o guardar previamente las imágenes en la PC.</p>
+
+    <h2>Novedades y funcionalidades incluidas (v1.0.0)</h2>
+    <ul>
+      <li><strong>Identidad visual:</strong> logotipo minimalista con isotipo geométrico (documento/hoja y detalle “2net”) y estilo corporativo con fondo gris claro, hoja A4 blanca con sombra, azul corporativo, gris oscuro para impresión y rojo suave para acciones de eliminación.</li>
+      <li><strong>Header fijo:</strong> muestra logotipo y nombre “TwonetPDF”, versión visible, selector rápido de distribución A4 (2, 3 o 4 campos) y acciones principales: “Descargar PDF”, “Imprimir” y “Eliminar todo” (con confirmación si hay datos cargados).</li>
+      <li><strong>Metadatos del documento:</strong> campos para nombre y descripción opcional, e indicador de fecha fijada automáticamente (DD/MM/YYYY, no editable), reflejados en la vista previa y en el PDF generado.</li>
+      <li><strong>Lienzo A4 dinámico:</strong> vista previa con proporción A4 y cuadrícula adaptable según la distribución seleccionada (2, 3 o 4 campos), con títulos descriptivos editables por campo.</li>
+      <li><strong>Carga de imágenes sin guardar en disco:</strong> pegado directo desde el portapapeles con <kbd>Ctrl</kbd> + <kbd>V</kbd> sobre el campo seleccionado, además de arrastrar y soltar o selección de archivo como respaldo. Cada campo permite reemplazar o eliminar su imagen individualmente.</li>
+      <li><strong>Exportación con jsPDF:</strong> generación de PDF A4 que incluye nombre del documento, versión, fecha, descripción (si existe), títulos de campos e imágenes ajustadas proporcionalmente sin distorsión. Si no se indica nombre, se usa “TwonetPDF_documento”.</li>
+      <li><strong>Impresión y limpieza:</strong> apertura del diálogo de impresión del documento y opción de limpiar todo el contenido con confirmación.</li>
+      <li><strong>Metadatos web y favicon:</strong> incorporación de favicon y etiquetas meta correspondientes al proyecto (SEO básico, tema, Open Graph/Twitter y configuración de aplicación web).</li>
+      <li><strong>Diseño responsivo:</strong> interfaz adaptable a diferentes tamaños de pantalla para facilitar el uso en escritorio y dispositivos móviles.</li>
+    </ul>
+
+    <h2>Estructura de archivos</h2>
+    <ul>
+      <li><code>html/index.html</code> — estructura principal de la aplicación.</li>
+      <li><code>css/styles.css</code> — estilos, identidad visual y diseño responsivo.</li>
+      <li><code>js/app.js</code> — lógica de interacción y exportación a PDF.</li>
+      <li><code>assets/favicon.svg</code> — favicon del proyecto.</li>
+      <li><code>docs/Resumen_TwonetPDF_v1.0.0.html</code> y <code>docs/Resumen_TwonetPDF_v1.0.0.pdf</code> — resumen de versión.</li>
+    </ul>
+
+    <div class="footer">
+      <span>TwonetPDF v1.0.0 — 2net</span>
+      <span>Resumen generado para documentación de la versión</span>
+    </div>
+  </main>
+</body>
+</html>

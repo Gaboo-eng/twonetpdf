@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="TwonetPDF">
+  <rect width="64" height="64" rx="14" fill="#1f5fbf"/>
+  <rect x="14" y="10" width="28" height="38" rx="4" fill="#ffffff"/>
+  <path d="M33 10 L42 19 L33 19 Z" fill="#dbe8ff"/>
+  <rect x="19" y="25" width="14" height="3" rx="1.5" fill="#1f5fbf"/>
+  <rect x="19" y="31" width="18" height="3" rx="1.5" fill="#8fb3ea"/>
+  <rect x="19" y="37" width="15" height="3" rx="1.5" fill="#8fb3ea"/>
+  <circle cx="44" cy="44" r="11" fill="#174c99" stroke="#ffffff" stroke-width="2"/>
+  <text x="44" y="48" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">2</text>
+</svg>

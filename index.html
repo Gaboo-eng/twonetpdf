@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>TwonetPDF v1.0.1 - 2net</title>
+  <meta name="description" content="TwonetPDF de 2net: aplicación web para adjuntar múltiples capturas o imágenes en un solo PDF A4 sin guardar archivos previamente. Permite pegar, arrastrar, organizar y exportar con jsPDF.">
+  <meta name="keywords" content="TwonetPDF, 2net, PDF A4, jsPDF, capturas, imágenes, comprobantes, IPTV, cambio de titular, exportar PDF, imprimir">
+  <meta name="author" content="2net">
+  <meta name="application-name" content="TwonetPDF">
+  <meta name="generator" content="TwonetPDF v1.0.1">
+  <meta name="theme-color" content="#1f5fbf">
+  <meta name="color-scheme" content="light">
+  <meta name="robots" content="index,follow">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="TwonetPDF">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="TwonetPDF">
+  <meta property="og:title" content="TwonetPDF v1.0.1 - 2net">
+  <meta property="og:description" content="Genera un PDF A4 con múltiples capturas o imágenes sin guardarlas previamente. Pega con Ctrl+V, organiza en 2, 3 o 4 campos y exporta con jsPDF.">
+  <meta property="og:image" content="../assets/favicon.svg">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="TwonetPDF v1.0.1 - 2net">
+  <meta name="twitter:description" content="Aplicación web de 2net para unir capturas e imágenes en un solo PDF A4.">
+  <meta name="twitter:image" content="../assets/favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="shortcut icon" href="../assets/favicon.svg">
+  <link rel="apple-touch-icon" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../css/styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+  <script src="../js/app.js" defer></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand" aria-label="TwonetPDF v1.0.1">
+        <svg class="logo" viewBox="0 0 64 64" role="img" aria-labelledby="logoTitle logoDesc" xmlns="http://www.w3.org/2000/svg">
+          <title id="logoTitle">Logotipo TwonetPDF</title>
+          <desc id="logoDesc">Documento geométrico con detalle 2net</desc>
+          <rect x="10" y="6" width="36" height="48" rx="4" fill="#ffffff" stroke="#1f5fbf" stroke-width="3"/>
+          <path d="M34 6 L46 18 L34 18 Z" fill="#dbe8ff" stroke="#1f5fbf" stroke-width="2" stroke-linejoin="round"/>
+          <rect x="16" y="24" width="18" height="3" rx="1.5" fill="#1f5fbf"/>
+          <rect x="16" y="31" width="24" height="3" rx="1.5" fill="#8fb3ea"/>
+          <rect x="16" y="38" width="20" height="3" rx="1.5" fill="#8fb3ea"/>
+          <circle cx="43" cy="43" r="11" fill="#1f5fbf"/>
+          <text x="43" y="47" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">2</text>
+        </svg>
+        <div class="brand-text">
+          <span class="brand-name">TwonetPDF</span>
+          <span class="app-version" aria-label="Versión 1.0.1">v1.0.1</span>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <div class="control-group layout-group" role="group" aria-label="Distribución de campos">
+          <span class="control-label">Distribución A4:</span>
+          <div class="segmented" id="layoutSelector">
+            <button type="button" class="seg-btn active" data-layout="2" aria-pressed="true">2 campos</button>
+            <button type="button" class="seg-btn" data-layout="3" aria-pressed="false">3 campos</button>
+            <button type="button" class="seg-btn" data-layout="4" aria-pressed="false">4 campos</button>
+          </div>
+        </div>
+
+        <div class="control-group actions-group">
+          <button type="button" id="downloadBtn" class="btn btn-primary">Descargar PDF</button>
+          <button type="button" id="printBtn" class="btn btn-secondary">Imprimir</button>
+          <button type="button" id="clearAllBtn" class="btn btn-danger">Eliminar todo</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <section class="meta-panel" aria-label="Metadatos del documento">
+      <div class="meta-grid">
+        <div class="field-group">
+          <label for="docName">Nombre del documento</label>
+          <input type="text" id="docName" name="docName" placeholder="Ej. Reporte de soportes" autocomplete="off">
+        </div>
+        <div class="field-group">
+          <label for="docDescription">Descripción <span class="muted">(opcional)</span></label>
+          <textarea id="docDescription" name="docDescription" rows="2" placeholder="Detalle breve del documento"></textarea>
+        </div>
+        <div class="field-group field-date">
+          <label for="docDate">Fecha</label>
+          <input type="text" id="docDate" name="docDate" readonly aria-readonly="true">
+          <small class="muted">Fijada automáticamente</small>
+        </div>
+      </div>
+      <p class="hint"><strong>Consejo:</strong> selecciona un campo en la hoja y presiona <kbd>Ctrl</kbd> + <kbd>V</kbd> para pegar una imagen desde el portapapeles. También puedes arrastrar o seleccionar un archivo.</p>
+    </section>
+
+    <section class="canvas-wrapper" aria-label="Vista previa del documento A4">
+      <div id="a4Sheet" class="a4-sheet layout-2">
+        <div class="sheet-header">
+          <div class="sheet-title-block">
+            <h2 id="sheetDocName" class="sheet-doc-name">TwonetPDF_documento</h2>
+            <p id="sheetDocDescription" class="sheet-doc-description" hidden></p>
+          </div>
+          <div class="sheet-meta">
+            <div class="sheet-meta-row">
+              <span class="sheet-date-label">Fecha:</span>
+              <span id="sheetDocDate" class="sheet-date-value"></span>
+            </div>
+            <div class="sheet-version" id="sheetAppVersion">TwonetPDF v1.0.1</div>
+          </div>
+        </div>
+        <div id="fieldsGrid" class="fields-grid" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <input type="file" id="filePicker" accept="image/*" hidden>
+</body>
+</html>
